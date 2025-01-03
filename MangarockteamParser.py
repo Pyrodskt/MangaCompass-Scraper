@@ -8,6 +8,7 @@ class MangarockteamParser():
         self.current = current
         self.last = 0
         self.results = []
+        self.urls = []
         self.pages = []
         self.search(self.url)
 
@@ -17,6 +18,9 @@ class MangarockteamParser():
         page = req.content
         soup = BeautifulSoup(page, features="html.parser")        
         for i in soup.find_all('li', {'class': 'wp-manga-chapter'}):
-            self.results.append(i.find('a').text)
+            self.results.append({
+                "title": i.find('a').text,
+                "url": i.find('a').get('href')
+                })
 
 

@@ -19,7 +19,7 @@ class ManganatoParser():
         result = soup.find_all("a", {"class": "chapter-name text-nowrap"})
         for res in result:
             try:
-                self.results.append(res.text)
+                self.results.append({"title": res.text, "url": res.get('href')})
                 # time.sleep(2)
             except Exception as e:
                 print("error == ", e)

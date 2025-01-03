@@ -49,3 +49,12 @@ class WebtoonParser():
         res = soup.find_all('span', {'class': 'subj'})
         for i in res:
             self.results.append(i.get_text())
+        
+        res2 = soup.find_all('li', {"class": '_episodeItem'})
+        for i in res2:
+            url = i.find('a').get('href')
+            title =  i.find('span', {"class": "subj"}).text
+            if url[:5] == 'https':
+                self.results.append({"title": title, 'url': url})
+            
+            
