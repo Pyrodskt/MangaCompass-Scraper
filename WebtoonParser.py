@@ -46,9 +46,9 @@ class WebtoonParser():
         req = requests.get(url)
         page = req.content
         soup = BeautifulSoup(page, features="html.parser")
-        res = soup.find_all('span', {'class': 'subj'})
-        for i in res:
-            self.results.append(i.get_text())
+        # res = soup.find_all('span', {'class': 'subj'})
+        # for i in res:
+        #     self.results.append(i.get_text())
         
         res2 = soup.find_all('li', {"class": '_episodeItem'})
         for i in res2:
